@@ -1,4 +1,6 @@
-// MediaChangeWatcher.h
+// Copyright (C) 2012 Johanns Gregorian
+// See license.txt 
+
 #define WM_USER_MEDIACHANGED WM_USER+88
 
 #pragma once
@@ -42,8 +44,7 @@ namespace Johanns {
 		MediaChangeWatcherException(System::String^ message) : ApplicationException(message) {};
 	};
 
-	public enum class MediaChangeWatcherFlags
-	{
+	public enum class MediaChangeWatcherFlags {
 		RenameItem = 0x00000001,
 		Create = 0x00000002,
 		Delete = 0x00000004,

@@ -1,4 +1,5 @@
-// This is the main DLL file.
+// Copyright (C) 2012 Johanns Gregorian
+// See license.txt 
 
 #include "stdafx.h"
 
