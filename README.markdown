@@ -40,7 +40,7 @@ Binaries:
 
 Precompiled (.net 4.0) binaries are available here: 
     
-    https://github.com/downloads/johanns/MediaChangeWatcher/MediaChangeWatcher_anyCPU.net4.zip
+    <https://github.com/downloads/johanns/MediaChangeWatcher/MediaChangeWatcher_anyCPU.net4.zip>
 
 Notes
 -----
