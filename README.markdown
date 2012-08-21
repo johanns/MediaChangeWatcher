@@ -8,6 +8,8 @@ Usage
 
 A C# sample application is included in the project (see /Test).
 
+![Sample App Snip](https://github.com/downloads/johanns/MediaChangeWatcher/MCWTestApp.PNG)
+
 ### Example:
 Create a MediaChangeWatcher instance, and setup window to receive shell notifications:
 	

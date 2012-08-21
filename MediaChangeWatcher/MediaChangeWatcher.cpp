@@ -15,6 +15,9 @@ namespace Johanns {
 	}
 
 	void MediaChangeWatcher::Register() {
+		if (IntPtr::Zero.Equals(this->Handle))
+			throw gcnew MediaChangeWatcherException("Handle not assigned.");
+		
 		LPITEMIDLIST pPidl;
 
 		if (::SHGetSpecialFolderLocation(reinterpret_cast<HWND>(Handle->ToInt32()), CSIDL_DESKTOP, &pPidl) == NOERROR) {
@@ -47,7 +50,7 @@ namespace Johanns {
 	}
 	
 	System::String^ MediaChangeWatcher::GetPathFromIDList(IntPtr wParam) {
-		SHNOTIFYSTRUCT *shns = (SHNOTIFYSTRUCT *) wParam.ToPointer();
+		SHNOTIFYSTRUCT *shns = reinterpret_cast<SHNOTIFYSTRUCT *>(wParam.ToPointer());
 		CHAR szPath[MAX_PATH];
 
 		::SHGetPathFromIDList((struct _ITEMIDLIST *) shns->dwItem1, (LPTSTR) szPath);
