@@ -26,16 +26,24 @@ Sample WndProc:
         base.WndProc(ref m);
         
         switch (m.Msg) {
+            // Media changes message have a value of 0x458
             case 0x458:
-                // Something happened...
+                // Something changed...
                 break;
         }
     }
 
+Binaries:
+---------
+
+Precompiled (.net 4.0) binaries are available here: 
+    
+    https://github.com/downloads/johanns/MediaChangeWatcher/MediaChangeWatcher_anyCPU.net4.zip
+
 Notes
 -----
 
-Project file requires Visual Studio 2010 or higher, Visual C++/CLI, and Windows SDK installed.
+Project file requires Visual Studio 2010 or higher, Visual C++/CLI, and Windows SDK installed (Vista or later).
 
 License
 -------

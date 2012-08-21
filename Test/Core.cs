@@ -12,7 +12,10 @@ namespace Johanns
     public partial class TestApplication : Form
     {
         MediaChangeWatcher _mw = null;
-        const int WM_USER_MEDIACHANGED = 0x0400 + 88;
+     
+        // We need to look for the a message with the following value.
+        // In windows.h (SDK) WM_USER is defined as 0x0400; change messages are 0x0400 + 0x58
+        const int WM_USER_MEDIACHANGED = 0x0458;
 
         public TestApplication() {
             InitializeComponent();
@@ -24,16 +27,19 @@ namespace Johanns
         }
 
         void OnHandleCreated(object sender, EventArgs e) {
+            // Pass the form Window Handle (hWnd) to MediaChangeWatcher instance.
             _mw.Handle = Handle;
         }
 
         void OnFormClosing(object sender, FormClosingEventArgs e) {
+            // Deregister the notification hook before exiting.
             _mw.Deregister();
         }
 
         protected override void WndProc(ref Message m) {
             base.WndProc(ref m);
             
+            // Looks for, and process the Media Changed message sent by the shell
             switch (m.Msg) {
                 case WM_USER_MEDIACHANGED:
                     _lbEvents.Items.Add(addAction(ref m));
@@ -66,8 +72,10 @@ namespace Johanns
         }
 
         private void OnRegisterClick(object sender, EventArgs e) {            
+           // Check to make sure that we aren't already registered
             if (!_mw.IsRegistered) {
                 try {
+                    // Register our window handle with the shell
                     _mw.Register();
                     _lbStatus.Text = "Registered";
                 }
@@ -78,8 +86,10 @@ namespace Johanns
         }
 
         private void OnDeregisterClick(object sender, EventArgs e) {            
+            // Are we already registered?
             if (_mw.IsRegistered) {
                 try {
+                    // Stop the Shell from sending us change notifications
                     _mw.Deregister();
                     _lbStatus.Text = "Not Registered";
                 }
