@@ -6,9 +6,9 @@ A .net (c++/cli) wrapper for Window Shell API that allows WinForm or WPF applica
 Usage
 -----
 
-A C## sample application is included in the project (see /Test).
+A C# sample application is included in the project (see /Test).
 
-### Example: C##
+### Example:
 Create a MediaChangeWatcher instance, and setup window to receive shell notifications:
 	
 	// Handle is Form.Handle
@@ -37,3 +37,13 @@ Notes
 
 Project file requires Visual Studio 2010 or higher, Visual C++/CLI, and Windows SDK installed.
 
+License
+-------
+
+Copyright (C) 2012 Johanns Gregorian
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
