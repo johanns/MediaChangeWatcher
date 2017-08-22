@@ -15,8 +15,9 @@ namespace Johanns {
 	}
 
 	void MediaChangeWatcher::Register() {
-		if (IntPtr::Zero.Equals(this->Handle))
+		if (IntPtr::Zero.Equals(this->Handle)) {
 			throw gcnew MediaChangeWatcherException("Handle not assigned.");
+		}
 		
 		LPITEMIDLIST pPidl;
 
@@ -33,18 +34,18 @@ namespace Johanns {
 				1,
 				&shcne);
 			
-			if (m_ulSHChangeNotifyRegister == 0)
+			if (m_ulSHChangeNotifyRegister == 0) {
 				throw gcnew MediaChangeWatcherException("Unable to register shell notification hook.");
-		}
-		else {
+			}
+		} else {
 			throw gcnew MediaChangeWatcherException("Unable to get desktop directory location.");
 		}
 	}
 
 	void MediaChangeWatcher::Deregister() {
-		if (m_ulSHChangeNotifyRegister)
-			if (!::SHChangeNotifyDeregister(this->m_ulSHChangeNotifyRegister))
-				throw gcnew MediaChangeWatcherException("Unable to deregister shell notification hook.");
+		if (m_ulSHChangeNotifyRegister && !::SHChangeNotifyDeregister(this->m_ulSHChangeNotifyRegister)) {
+			throw gcnew MediaChangeWatcherException("Unable to deregister shell notification hook.");
+		}
 
 		m_ulSHChangeNotifyRegister = 0;
 	}
